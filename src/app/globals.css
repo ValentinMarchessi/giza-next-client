@@ -2,32 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply antialiased bg-white;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.container {
+  @apply bg-primary-100;
+}
+
+h1 {
+  @apply text-5xl font-bold text-neutral-700 font-heading mb-3;
+  line-height: 68px;
+}
+
+h1:last-child,
+p:last-child {
+  @apply mb-0;
+}
+
+p {
+  @apply font-body mb-1;
+}
+a {
+  @apply text-neutral-600 font-body;
+}
+a:active,
+a:hover {
+  @apply text-primary-500;
+}
+
+button {
+  @apply bg-primary-500 text-white font-normal text-base rounded-md shadow-m px-10 py-3 font-Manrope;
+}
+
+.section {
+  @apply py-24;
+}
+
+input,
+select {
+  @apply px-6 py-2 text-base font-normal bg-neutral-200 rounded-lg outline-none transition-all;
+}
+
+input:hover {
+  @apply text-neutral-400 bg-neutral-200;
+}
+
+input:focus {
+  @apply text-neutral-400 bg-white;
+}
+
+input:disabled {
+  @apply text-neutral-400 bg-white;
 }
