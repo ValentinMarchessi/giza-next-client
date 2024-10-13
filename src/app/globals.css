@@ -38,7 +38,10 @@ a:hover {
 }
 
 button {
-  @apply bg-primary-500 text-white font-normal text-base rounded-md shadow-m px-10 py-3 font-Manrope;
+  @apply bg-primary-500 text-white font-normal text-base rounded-md shadow-m px-10 py-3 font-Manrope transition-all;
+}
+button:hover {
+  @apply bg-primary-500/80 cursor-pointer transform-gpu brightness-110;
 }
 
 .section {

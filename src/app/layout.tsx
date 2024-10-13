@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Lexend } from "next/font/google";
+import { Manrope, Lexend, Roboto } from "next/font/google";
 import "./globals.css";
 
 const lexend = Lexend({
@@ -14,6 +14,12 @@ const manrope = Manrope({
   variable: "--font-manrope",
   display: "swap",
 });
+const roboto = Roboto({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Giza",
@@ -23,24 +29,17 @@ export const metadata: Metadata = {
 type Props = {
   children: React.ReactNode;
   navbar: React.ReactNode;
-  hero: React.ReactNode;
-  search: React.ReactNode;
 };
 
-export default function RootLayout({
-  children,
-  navbar,
-  hero,
-  search,
-}: Readonly<Props>) {
+export default function RootLayout({ children, navbar }: Readonly<Props>) {
   return (
-    <html lang="en" className={`${lexend.variable} ${manrope.variable}`}>
+    <html
+      lang="en"
+      className={`${lexend.variable} ${manrope.variable} ${roboto.variable}`}
+    >
       <body>
         {navbar}
-        <main className="flex flex-col">
-          {hero}
-          {search}
-        </main>
+        <main className="flex flex-col">{children}</main>
       </body>
     </html>
   );

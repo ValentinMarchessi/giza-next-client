@@ -1,4 +1,16 @@
+import { useMemo } from "react";
+
 export default function Search() {
+  const jobLocationOptions: [value: string, label: string][] = useMemo(
+    () => [
+      ["all", "All Locations"],
+      ["cairo", "Cairo"],
+      ["giza", "Giza"],
+      ["alexandria", "Alexandria"],
+    ],
+    []
+  );
+
   return (
     <article
       id="search-section"
@@ -16,12 +28,11 @@ export default function Search() {
           placeholder="Search for jobs..."
         ></input>
         <select name="job-location" className="mx-1 px-2 rounded-none">
-          <option value="all">All Locations</option>
-          <option value="cairo">Cairo</option>
-          <option value="giza">Giza</option>
-          <option value="alexandria">Alexandria</option>
-          <option value="luxor">Luxor</option>
-          <option value="aswan">Aswan</option>
+          {jobLocationOptions.map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
         </select>
         <button className="rounded-l-none">Search</button>
       </div>
