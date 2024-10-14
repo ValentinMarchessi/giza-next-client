@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Lexend, Roboto } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 const lexend = Lexend({
   weight: "variable",
@@ -28,18 +29,17 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode;
-  navbar: React.ReactNode;
 };
 
-export default function RootLayout({ children, navbar }: Readonly<Props>) {
+export default function RootLayout({ children }: Readonly<Props>) {
   return (
     <html
       lang="en"
       className={`${lexend.variable} ${manrope.variable} ${roboto.variable}`}
     >
       <body>
-        {navbar}
-        <main className="flex flex-col">{children}</main>
+        <Navbar />
+        {children}
       </body>
     </html>
   );

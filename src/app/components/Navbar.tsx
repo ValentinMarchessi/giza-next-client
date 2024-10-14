@@ -35,6 +35,10 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
+      <div className="ml-auto flex gap-6">
+        {/* TODO: Add auth check to show user settings or Log in Link */}
+        <Link href="/signup">Log In</Link>
+      </div>
     </nav>
   );
 }

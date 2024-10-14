@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+body,
+html {
+  @apply h-full;
+}
+
 body {
-  @apply antialiased bg-white;
+  @apply antialiased bg-white flex flex-col;
+}
+
+main {
+  @apply grid;
 }
 
 @layer utilities {
@@ -21,6 +30,10 @@ h1 {
   line-height: 68px;
 }
 
+label {
+  @apply text-neutral-600 font-body;
+}
+
 h1:last-child,
 p:last-child {
   @apply mb-0;
@@ -32,16 +45,22 @@ p {
 a {
   @apply text-neutral-600 font-body;
 }
-a:active,
-a:hover {
-  @apply text-primary-500;
-}
 
+a:hover {
+  @apply text-primary-500 underline;
+}
+a:active {
+  @apply text-primary-900;
+}
 button {
   @apply bg-primary-500 text-white font-normal text-base rounded-md shadow-m px-10 py-3 font-Manrope transition-all;
 }
 button:hover {
   @apply bg-primary-500/80 cursor-pointer transform-gpu brightness-110;
+}
+
+button:active {
+  @apply bg-primary-500/90 scale-90;
 }
 
 .section {
@@ -50,15 +69,7 @@ button:hover {
 
 input,
 select {
-  @apply px-6 py-2 text-base font-normal bg-neutral-200 rounded-lg outline-none transition-all;
-}
-
-input:hover {
-  @apply text-neutral-400 bg-neutral-200;
-}
-
-input:focus {
-  @apply text-neutral-400 bg-white;
+  @apply p-3 text-base font-normal bg-white rounded-lg outline-none transition-all;
 }
 
 input:disabled {
