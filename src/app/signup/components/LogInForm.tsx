@@ -3,7 +3,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { LogInSchema, logInSchema } from "../schemas";
+import { LogInSchema, logInSchema } from "../../../schemas";
 
 export default function LogInForm() {
   const {

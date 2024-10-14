@@ -1,6 +1,11 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import { SignUpSchema, signUpSchema } from "@/schemas";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Role } from "@/types/enums";
+import useCarousel from "@/hooks/useCarousel";
 
 export default function OnboardingForm() {
   /* 
@@ -9,38 +14,82 @@ export default function OnboardingForm() {
   2. Ask wether the user is a candidate or an employer
   3. Ask for further identifying information depending on the previous answer
   */
+  const { handleSubmit, setValue } = useForm<SignUpSchema>({
+    resolver: yupResolver(signUpSchema),
+  });
+  const {
+    carouselRef,
+    ScrollHandlers,
+    percentage,
+    scrollLeft,
+    scrollRight,
+    scrollLeftDisabled,
+    scrollRightDisabled,
+  } = useCarousel();
 
   const steps = useMemo(
     () => [
-      <div key="step-1">Step 1</div>,
+      <div key="step-1">
+        <button type="button" onClick={() => setValue("role", Role.Candidate)}>
+          Candidate
+        </button>
+        <button type="button" onClick={() => setValue("role", Role.Company)}>
+          Employer
+        </button>
+      </div>,
       <div key="step-2">Step 2</div>,
       <div key="step-3">Step 3</div>,
+      <div key="step-4">Step 4</div>,
     ],
-    []
+    [setValue]
   );
-  const [step, setStep] = useState(0);
-  const prevStep = useCallback(() => setStep((s) => s - 1), [setStep]);
-  const nextStep = useCallback(() => setStep((s) => s + 1), [setStep]);
+
+  const scrollButtonClassName =
+    "disabled:opacity-0 disabled:pointer-events-none select-none rounded-full text-xl p-2 aspect-square max-h-[50px]";
 
   return (
-    <div className="flex flex-col items-center">
-      {steps[step]}
-      <div className="grid grid-cols-2">
+    <>
+      <div className="grid relative bg-neutral-200 shadow-lg flex-grow">
+        {/* <form className="container">{steps[step]}</form> */}
+        <progress
+          className="h-[3px] absolute w-full z-0 bg-gradient-to-r"
+          value={percentage * 100}
+          max={100}
+        >
+          {percentage * 100}%
+        </progress>
+        <div
+          ref={carouselRef}
+          {...ScrollHandlers}
+          className="carousel no-scrollbar h-full m-4"
+        >
+          {steps.map((element, index) => (
+            <div
+              key={index}
+              id={`carousel-item-${index}`}
+              className="carousel-item"
+            >
+              {element}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-8 grid grid-cols-2 w-full justify-items-center">
         <button
-          onClick={prevStep}
-          disabled={step <= 0}
-          className="disabled:opacity-0 disabled:pointer-events-none select-none rounded-full text-xl p-2 aspect-square"
+          onClick={scrollLeft}
+          disabled={scrollLeftDisabled}
+          className={scrollButtonClassName}
         >
           {"<"}
         </button>
         <button
-          onClick={nextStep}
-          disabled={step >= steps.length - 1}
-          className="disabled:opacity-0 disabled:pointer-events-none select-none rounded-full text-xl p-2 aspect-square"
+          onClick={scrollRight}
+          disabled={scrollRightDisabled}
+          className={scrollButtonClassName}
         >
           {">"}
         </button>
       </div>
-    </div>
+    </>
   );
 }

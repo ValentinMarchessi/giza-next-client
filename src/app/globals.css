@@ -22,7 +22,7 @@ main {
 }
 
 .container {
-  @apply bg-primary-100;
+  @apply bg-primary-100 drop-shadow-lg rounded-lg;
 }
 
 h1 {
@@ -56,7 +56,7 @@ button {
   @apply bg-primary-500 text-white font-normal text-base rounded-md shadow-m px-10 py-3 font-Manrope transition-all;
 }
 button:hover {
-  @apply bg-primary-500/80 cursor-pointer transform-gpu brightness-110;
+  @apply bg-primary-500/80 shadow-md shadow-primary-300 cursor-pointer brightness-110;
 }
 
 button:active {
@@ -69,9 +69,53 @@ button:active {
 
 input,
 select {
-  @apply p-3 text-base font-normal bg-white rounded-lg outline-none transition-all;
+  @apply p-3 text-base font-normal bg-white rounded-lg outline-none transition-all shadow-sm;
 }
 
 input:disabled {
   @apply text-neutral-400 bg-white;
+}
+
+.carousel {
+  @apply flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth;
+}
+.carousel > .carousel-item {
+  @apply w-full flex-shrink-0 transition-opacity duration-500 ease-in-out;
+  scroll-snap-align: start;
+  user-select: none;
+}
+
+.no-scrollbar::-webkit-scrollbar-track {
+  @apply hidden;
+}
+
+.no-scrollbar::-webkit-scrollbar-button {
+  @apply hidden;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  @apply hidden;
+}
+
+.scrollbar-top {
+  transform: rotateX(180deg);
+}
+
+.scrollbar-top > * {
+  transform: rotateX(180deg);
+}
+.custom-scrollbar::-webkit-scrollbar {
+  @apply h-1;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-r from-primary-200 to-primary-850 rounded-full;
+  transform: scaleX(2);
+}
+
+::-webkit-progress-value {
+  @apply bg-gradient-to-r from-primary-200 to-primary-850;
 }
