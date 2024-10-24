@@ -58,9 +58,7 @@ export default function OnboardingForm() {
           className="h-[3px] absolute w-full z-0 bg-gradient-to-r"
           value={percentage * 100}
           max={100}
-        >
-          {percentage * 100}%
-        </progress>
+        />
         <div
           ref={carouselRef}
           {...ScrollHandlers}

@@ -1,0 +1,66 @@
+@import "./components.css";
+@import "./layout.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border font-Manrope;
+}
+
+body {
+  @apply antialiased 
+  bg-white dark:bg-black-bg
+  text-black dark:text-white
+  flex flex-col;
+}
+
+main {
+  @apply grid;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.container {
+  @apply bg-primary-100 drop-shadow-lg rounded-lg;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply mb-3 last:mb-0;
+}
+h1 {
+  @apply text-5xl font-bold;
+}
+h2 {
+  @apply text-4xl font-semibold;
+}
+h3 {
+  @apply text-3xl font-medium;
+}
+h4 {
+  @apply text-2xl font-medium;
+}
+h5 {
+  @apply text-xl font-medium;
+}
+h6 {
+  @apply text-lg font-medium;
+}
+
+p {
+  @apply mb-2 last:mb-0;
+}
+a {
+  @apply transition-all duration-100 ease-in-out
+    hover:text-primary-500 hover:underline;
+}

@@ -1,0 +1,14 @@
+@tailwind base;
+
+@layer base {
+  /* ------------------------------- LAYOUT ------------------------------- */
+
+  .section {
+    @apply py-24;
+  }
+
+  /* Inputs */
+  .form-input {
+    @apply rounded-md;
+  }
+}

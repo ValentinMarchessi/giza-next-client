@@ -1,0 +1,90 @@
+@tailwind components;
+
+@layer components {
+  /* Buttons */
+  button {
+    @apply rounded-md shadow-md transition-all !py-3 !px-6
+    hover:brightness-110 active:scale-90;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white
+    hover:bg-primary-500/80 hover:shadow-primary-500/40
+    active:bg-primary-500/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-400 text-white
+    hover:bg-secondary-400/80 hover:shadow-secondary-400/40
+    active:bg-secondary-400/90;
+  }
+
+  .btn-danger {
+    @apply bg-danger-400 text-white
+    hover:bg-danger-400/80 hover:shadow-danger-400/40
+    active:bg-danger-400/90;
+  }
+
+  .btn-warning {
+    @apply bg-warning-400 text-black
+    hover:bg-warning-400/80 hover:shadow-warning-400/40
+    active:bg-warning-400/90;
+  }
+
+  .btn-success {
+    @apply bg-success-300 text-black
+    hover:bg-success-300/80 hover:shadow-success-400/40
+    active:bg-success-300/90;
+  }
+
+  /* Cards */
+  .card {
+    @apply shadow-md rounded-lg p-6;
+  }
+
+  /* ------------------------------- CAROUSEL ------------------------------- */
+
+  .carousel {
+    @apply flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth;
+  }
+  .carousel > .carousel-item {
+    @apply w-full flex-shrink-0 transition-opacity duration-500 ease-in-out;
+    scroll-snap-align: start;
+    user-select: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar-track {
+    @apply hidden;
+  }
+
+  .no-scrollbar::-webkit-scrollbar-button {
+    @apply hidden;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  .scrollbar-top {
+    transform: rotateX(180deg);
+  }
+
+  .scrollbar-top > * {
+    transform: rotateX(180deg);
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply h-1;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-r from-primary-200 to-primary-800 rounded-full;
+    transform: scaleX(2);
+  }
+
+  ::-webkit-progress-value {
+    @apply bg-gradient-to-r from-primary-200 to-primary-800;
+  }
+}
