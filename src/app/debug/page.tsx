@@ -3,6 +3,7 @@
  */
 
 import Input from "@/components/Input";
+import Select from "@/components/Select";
 import Separator from "@/components/Separator";
 
 function Section({
@@ -101,20 +102,38 @@ export default function Debug() {
       </Section>
       <Section title="Inputs">
         <div className="flex gap-4 flex-wrap">
-          <Input type="text" placeholder="Text Input" className="rounded-lg" />
-          <Input type="text" value={"John Doe"} className="rounded-lg" />
-          <Input type="email" placeholder="Email Input" className="input" />
           <Input
+            label="Text Input"
+            type="text"
+            placeholder="Text Input"
+            className="rounded-lg"
+          />
+          <Input
+            label="Name"
+            type="text"
+            value={"John Doe"}
+            className="rounded-lg"
+          />
+          <Input
+            label="E-mail"
+            type="email"
+            placeholder="Email Input"
+            value={"john.doe@mail.com"}
+            className="input"
+          />
+          <Input
+            label="Password"
             type="password"
             placeholder="Password Input"
             value={"password"}
             className="input"
           />
-          <select>
+          <Select label="Select">
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
             <option value="3">Option 3</option>
-          </select>
+          </Select>
+          <Input type="file" name="File Input" label="File" />
         </div>
       </Section>
     </section>
