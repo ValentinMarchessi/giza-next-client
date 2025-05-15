@@ -5,7 +5,7 @@ interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {
 
 export default function Select({ children, ...props }: Props) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col">
       {props.label && (
         <label htmlFor={props.id} className="text-sm font-medium">
           {props.label}

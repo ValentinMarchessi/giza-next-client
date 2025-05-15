@@ -1,19 +1,22 @@
-@import "./components.css";
-@import "./layout.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./components.css";
+@import "./layout.css";
 
 * {
   @apply box-border font-Manrope;
+}
+
+:root {
+  @apply min-h-screen;
 }
 
 body {
   @apply antialiased 
   bg-white dark:bg-black-bg
   text-black dark:text-white
-  flex flex-col;
+  flex flex-col h-full grow;
 }
 
 main {
@@ -24,10 +27,6 @@ main {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-.container {
-  @apply bg-primary-100 drop-shadow-lg rounded-lg;
 }
 
 h1,

@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LogInSchema, logInSchema } from "../../../schemas";
+import Input from "@/components/Input";
 
 export default function LogInForm() {
   const {
@@ -14,23 +15,21 @@ export default function LogInForm() {
 
   return (
     <form
-      className="container max-w-max mx-auto flex flex-col justify-center items-center gap-4 p-12"
+      className="container max-w-max mx-auto flex flex-col justify-center items-center gap-4 p-12 bg-neutral-100 dark:bg-neutral-950 rounded-lg"
       onSubmit={handleSubmit((data) => {
         console.log(data);
       })}
     >
-      <div className="flex flex-col">
-        <label htmlFor="email">Email</label>
-        <input type="email" {...register("email")} />
+      <Input label="Email" type="email" {...register("email")} />
+      <Input label="Password" type="password" {...register("password")} />
+      <div className="flex flex-col gap-2">
+        <button className="btn-primary w-full" type="submit">
+          Log In
+        </button>
+        <Link href="/onboarding">
+          <button className="btn-secondary w-full">Sign Up</button>
+        </Link>
       </div>
-      <div className="flex flex-col">
-        <label htmlFor="password">Password</label>
-        <input type="password" {...register("password")} />
-      </div>
-      <button className="max-w-max mt-8" type="submit">
-        Log In
-      </button>
-      <Link href="/onboarding">Sign Up</Link>
       <p className="text-danger-350">{errors.root?.message}</p>
     </form>
   );

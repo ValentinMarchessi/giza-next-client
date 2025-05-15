@@ -52,7 +52,7 @@ export default function OnboardingForm() {
 
   return (
     <>
-      <div className="grid relative bg-neutral-200 shadow-lg flex-grow">
+      <div className="grid relative flex-grow">
         {/* <form className="container">{steps[step]}</form> */}
         <progress
           className="h-[3px] absolute w-full z-0 bg-gradient-to-r"

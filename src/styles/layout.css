@@ -11,4 +11,8 @@
   .form-input {
     @apply rounded-md;
   }
+
+  .skeleton {
+    @apply animate-pulse;
+  }
 }

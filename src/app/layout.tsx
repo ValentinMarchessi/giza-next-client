@@ -36,7 +36,7 @@ export default function RootLayout({ children }: Readonly<Props>) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <body
-        className={`${lexend.variable} ${manrope.variable} ${roboto.variable}`}
+        className={`${lexend.variable} ${manrope.variable} ${roboto.variable} h-full grow`}
       >
         <Navbar />
         {children}

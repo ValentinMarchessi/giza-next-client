@@ -11,7 +11,7 @@ export default function Input({ label, error, ...props }: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col">
       {label && (
         <label htmlFor={props.id} className="text-sm font-medium">
           {label}

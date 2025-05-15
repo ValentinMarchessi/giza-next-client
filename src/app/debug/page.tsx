@@ -3,23 +3,11 @@
  */
 
 import Input from "@/components/Input";
+import PlaceholderRect from "@/components/PlaceholdeRect";
+import Section from "@/components/Section";
 import Select from "@/components/Select";
-import Separator from "@/components/Separator";
-
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="mb-10 last:mb-0 flex flex-col gap-4">
-      <Separator text={title} />
-      {children}
-    </div>
-  );
-}
+import Spinner from "@/components/Spinner";
+import * as motion from "framer-motion/client";
 
 export default function Debug() {
   return (
@@ -74,7 +62,6 @@ export default function Debug() {
           <a>Link</a>
         </div>
       </Section>
-
       <Section title="Buttons">
         <div className="flex gap-4 flex-wrap">
           <button className="btn-primary">Primary</button>
@@ -85,7 +72,7 @@ export default function Debug() {
         </div>
       </Section>
       <Section title="Cards">
-        <div className="flex gap-4 flex-wrap">
+        <motion.div className="flex gap-4 flex-wrap">
           <div className="card bg-primary-200 dark:bg-primary-800">
             <h3>Card 1</h3>
             <p>Content</p>
@@ -98,35 +85,27 @@ export default function Debug() {
             <h3>Card 3</h3>
             <p>Content</p>
           </div>
-        </div>
+          <div className="card flex flex-col gap-2 bg-neutral-200 dark:bg-neutral-950">
+            <PlaceholderRect width="100px" height="2rem" />
+            <PlaceholderRect width="100%" height="100px" />
+          </div>
+        </motion.div>
       </Section>
       <Section title="Inputs">
         <div className="flex gap-4 flex-wrap">
-          <Input
-            label="Text Input"
-            type="text"
-            placeholder="Text Input"
-            className="rounded-lg"
-          />
-          <Input
-            label="Name"
-            type="text"
-            value={"John Doe"}
-            className="rounded-lg"
-          />
+          <Input label="Text Input" type="text" placeholder="Text Input" />
+          <Input label="Name" type="text" value={"John Doe"} />
           <Input
             label="E-mail"
             type="email"
             placeholder="Email Input"
             value={"john.doe@mail.com"}
-            className="input"
           />
           <Input
             label="Password"
             type="password"
             placeholder="Password Input"
             value={"password"}
-            className="input"
           />
           <Select label="Select">
             <option value="1">Option 1</option>
@@ -134,6 +113,13 @@ export default function Debug() {
             <option value="3">Option 3</option>
           </Select>
           <Input type="file" name="File Input" label="File" />
+        </div>
+      </Section>
+      <Section title="Spinners">
+        <div className="flex">
+          <Spinner className="fill-primary-500" />
+          <Spinner className="fill-secondary" />
+          <Spinner className="fill-black-300" />
         </div>
       </Section>
     </section>

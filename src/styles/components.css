@@ -3,8 +3,8 @@
 @layer components {
   /* Buttons */
   button {
-    @apply rounded-md shadow-md transition-all !py-3 !px-6
-    hover:brightness-110 active:scale-90;
+    @apply rounded-md shadow-md transition-all 
+    hover:brightness-110 active:scale-90 !px-2 !py-1;
   }
 
   .btn-primary {
